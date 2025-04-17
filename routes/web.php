@@ -50,9 +50,9 @@ Route::get('/fonctionnalite', function () {
     return view('fonctionnalite');
 })->name('fonctionnalite');
 
-Route::get('/tarifs', function () {
-    return view('tarifs');
-})->name('tarifs');
+Route::get('/market-place', function () {
+    return view('market-place');
+})->name('market-place');
 
 Route::get('/about', function () {
     return view('about');

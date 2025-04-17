@@ -12,7 +12,7 @@
                 <!-- Formation 1 -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden">
                     <div class="relative">
-                        <img src="{{ asset('images/formation-installation.jpg') }}" alt="Installation de panneaux solaires" class="w-full h-48 object-cover">
+                        <img src="{{ asset('images/image-3.jpg') }}" alt="Installation de panneaux solaires" class="w-full h-48 object-cover">
                         <div class="absolute top-0 right-0 bg-blue-600 text-white px-4 py-2 rounded-bl-lg">
                             3 jours
                         </div>
@@ -43,7 +43,7 @@
                 <!-- Formation 2 -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden">
                     <div class="relative">
-                        <img src="{{ asset('images/formation-maintenance.jpg') }}" alt="Maintenance des installations" class="w-full h-48 object-cover">
+                        <img src="{{ asset('images/29990.jpg') }}" alt="Maintenance des installations" class="w-full h-48 object-cover">
                         <div class="absolute top-0 right-0 bg-blue-600 text-white px-4 py-2 rounded-bl-lg">
                             2 jours
                         </div>
@@ -74,7 +74,7 @@
                 <!-- Formation 3 -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden">
                     <div class="relative">
-                        <img src="{{ asset('images/formation-conception.jpg') }}" alt="Conception de projets" class="w-full h-48 object-cover">
+                        <img src="{{ asset('images/4783.jpg') }}" alt="Conception de projets" class="w-full h-48 object-cover">
                         <div class="absolute top-0 right-0 bg-blue-600 text-white px-4 py-2 rounded-bl-lg">
                             4 jours
                         </div>

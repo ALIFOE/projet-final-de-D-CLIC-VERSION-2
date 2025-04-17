@@ -52,11 +52,11 @@
                     <div class="space-y-4">
                         <div class="flex items-start">
                             <i class="fas fa-map-marker-alt text-blue-500 mt-1 mr-3"></i>
-                            <span class="text-gray-600">123 Rue du Soleil, 75001 Paris, France</span>
+                            <span class="text-gray-600">Rue KOPEGA 56.GB Lomé, Togo</span>
                         </div>
                         <div class="flex items-center">
                             <i class="fas fa-phone text-blue-500 mr-3"></i>
-                            <span class="text-gray-600">+33 1 23 45 67 89</span>
+                            <span class="text-gray-600">+228 97 73 43 81</span>
                         </div>
                         <div class="flex items-center">
                             <i class="fas fa-envelope text-blue-500 mr-3"></i>

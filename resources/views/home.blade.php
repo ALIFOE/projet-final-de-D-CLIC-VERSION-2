@@ -17,7 +17,18 @@
                 background-position: center;
                 background-attachment: fixed;
                 background-color: #f8f9fa;
+                animation: backgroundZoom 20s ease-in-out infinite alternate;
             }
+
+            @keyframes backgroundZoom {
+                0% {
+                    background-size: 100% auto;
+                }
+                100% {
+                    background-size: 120% auto;
+                }
+            }
+
             .solar-gradient {
                 background: linear-gradient(135deg, #1e88e5 0%, #0d47a1 100%);
             }
@@ -46,11 +57,24 @@
             }
             .hero-section {
                 min-height: 500px;
-                background-image: url('/images/solar-panels.jpg');
+                background-image: url('{{ asset('images/solar-panels.jpg')}}');
                 background-size: cover;
                 background-position: center;
                 position: relative;
+                animation: heroFadeIn 2s ease-out;
             }
+
+            @keyframes heroFadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
             .hero-section::before {
                 content: '';
                 position: absolute;
@@ -59,7 +83,16 @@
                 width: 99%;
                 height: 100%;
                 background-image: url('{{ asset('images/4813.jpg') }}');
-                /* background: rgba(0, 0, 0, 0.5); */
+                animation: overlayFade 3s ease-in-out infinite alternate;
+            }
+
+            @keyframes overlayFade {
+                0% {
+                    opacity: 0.7;
+                }
+                100% {
+                    opacity: 0.9;
+                }
             }
             .feature-icon {
                 font-size: 2.5rem;
@@ -77,14 +110,32 @@
                 
                 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             }
+            .hero-text {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            }
+            .hero-description {
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+            }
+            .section-title {
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+            }
+            .section-description {
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            }
+            .card-title {
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            }
+            .feature-text {
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            }
         </style>
     </head>
 
     <section class="hero-section relative flex items-center">
         <div class="container mx-auto px-6 z-10 text-center md:text-left">
             <div class="md:w-2/3">
-                <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight">Optez pour la durabilité et meilleure performance de vos installations solaires</h1>
-                <p class="mt-4 text-xl text-gray-200">Suivi en temps réel, analyses avancées et maintenance prédictive pour maximiser votre production d'énergie photovoltaïque.</p>
+                <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight hero-text">Optez pour la durabilité et meilleure performance de vos installations solaires</h1>
+                <p class="mt-4 text-xl text-gray-200 hero-description">Suivi en temps réel, analyses avancées et maintenance prédictive pour maximiser votre production d'énergie photovoltaïque.</p>
                 <div class="mt-8 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 justify-center md:justify-start">
                     @auth
                         <a href="{{ route('service') }}" class="btn-primary text-center py-3 px-6 rounded-md text-lg font-medium hover:bg-blue-700">Démarrer un service</a>
@@ -101,8 +152,8 @@
         <div class="container mx-auto px-6">
             <div class="content-section">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold text-gray-800">Pourquoi choisir Né Don Energy ?</h2>
-                    <p class="mt-4 text-xl text-gray-600">Une solution complète pour optimiser vos installations photovoltaïques</p>
+                    <h2 class="text-3xl font-bold text-gray-800 section-title">Pourquoi choisir Né Don Energy ?</h2>
+                    <p class="mt-4 text-xl text-gray-600 section-description">Une solution complète pour optimiser vos installations photovoltaïques</p>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -110,24 +161,24 @@
                         <div class="mb-4">
                             <i class="fas fa-chart-line feature-icon"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Suivi en temps réel</h3>
-                        <p class="text-gray-600">Visualisez la production de vos panneaux solaires en direct et accédez à des statistiques détaillées.</p>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2 card-title">Suivi en temps réel</h3>
+                        <p class="text-gray-600 feature-text">Visualisez la production de vos panneaux solaires en direct et accédez à des statistiques détaillées.</p>
                     </div>
                     
                     <div class="card bg-white p-8 text-center">
                         <div class="mb-4">
                             <i class="fas fa-tools feature-icon"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Maintenance prédictive</h3>
-                        <p class="text-gray-600">Détectez les anomalies avant qu'elles n'impactent votre production et planifiez les interventions.</p>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2 card-title">Maintenance prédictive</h3>
+                        <p class="text-gray-600 feature-text">Détectez les anomalies avant qu'elles n'impactent votre production et planifiez les interventions.</p>
                     </div>
                     
                     <div class="card bg-white p-8 text-center">
                         <div class="mb-4">
                             <i class="fas fa-sun feature-icon"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Prévisions météo</h3>
-                        <p class="text-gray-600">Anticipez votre production grâce à l'intégration des données météorologiques locales.</p>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2 card-title">Prévisions météo</h3>
+                        <p class="text-gray-600 feature-text">Anticipez votre production grâce à l'intégration des données météorologiques locales.</p>
                     </div>
                 </div>
             </div>
@@ -138,8 +189,8 @@
         <div class="container mx-auto px-6">
             <div class="content-section">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold text-gray-800">Fonctionnalités adaptées à chaque profil</h2>
-                    <p class="mt-4 text-xl text-gray-600">Une solution polyvalente pour tous les acteurs du photovoltaïque</p>
+                    <h2 class="text-3xl font-bold text-gray-800 section-title">Fonctionnalités adaptées à chaque profil</h2>
+                    <p class="mt-4 text-xl text-gray-600 section-description">Une solution polyvalente pour tous les acteurs du photovoltaïque</p>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -268,6 +319,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="card bg-white p-6">
                     <h3 class="text-xl font-semibold text-gray-800 mb-4">Production journalière</h3>
+                    <p id="lastUpdate" class="text-sm text-gray-600 mb-2"></p>
                     <div class="h-80">
                         <canvas id="dailyProductionChart"></canvas>
                     </div>
@@ -275,6 +327,7 @@
                 
                 <div class="card bg-white p-6">
                     <h3 class="text-xl font-semibold text-gray-800 mb-4">Comparaison Production vs Consommation</h3>
+                    <p id="lastUpdateComparison" class="text-sm text-gray-600 mb-2"></p>
                     <div class="h-80">
                         <canvas id="comparisonChart"></canvas>
                     </div>
@@ -314,8 +367,8 @@
                     <div class="mt-6 flex items-center">
                         <div class="h-12 w-12 rounded-full bg-gray-300 flex items-center justify-center text-gray-600 text-xl font-bold">JD</div>
                         <div class="ml-4">
-                            <p class="font-semibold">Jean Dupont</p>
-                            <p class="text-sm text-gray-500">Propriétaire résidentiel</p>
+                            <p class="font-semibold">AFANKOUDTCHE Jean</p>
+                            <p class="text-sm text-gray-500">Professeur Enseignant</p>
                         </div>
                     </div>
                 </div>
@@ -330,12 +383,12 @@
                             <i class="fas fa-star"></i>
                         </div>
                     </div>
-                    <p class="text-gray-600 italic">"En tant que technicien, cette plateforme a révolutionné ma façon de travailler. Les alertes automatiques me permettent d'intervenir avant même que le client ne remarque un problème."</p>
+                    <p class="text-gray-600 italic">"En tant que technicienne, cette plateforme a révolutionné ma façon de travailler. Les alertes automatiques me permettent d'intervenir avant même que le client ne remarque un problème."</p>
                     <div class="mt-6 flex items-center">
                         <div class="h-12 w-12 rounded-full bg-gray-300 flex items-center justify-center text-gray-600 text-xl font-bold">ML</div>
                         <div class="ml-4">
-                            <p class="font-semibold">Marie Lefort</p>
-                            <p class="text-sm text-gray-500">Technicienne solaire</p>
+                            <p class="font-semibold">Justine DJESSOU</p>
+                            <p class="text-sm text-gray-500">Docteur en Biotechnologie Humaine</p>
                         </div>
                     </div>
                 </div>
@@ -354,8 +407,8 @@
                     <div class="mt-6 flex items-center">
                         <div class="h-12 w-12 rounded-full bg-gray-300 flex items-center justify-center text-gray-600 text-xl font-bold">PG</div>
                         <div class="ml-4">
-                            <p class="font-semibold">Pierre Gagnon</p>
-                            <p class="text-sm text-gray-500">Gestionnaire de parc solaire</p>
+                            <p class="font-semibold">Dorian AHONDO</p>
+                            <p class="text-sm text-gray-500">Atiste peintre et plâtrier</p>
                         </div>
                     </div>
                 </div>
@@ -423,11 +476,11 @@
                     <ul class="space-y-2">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt mt-1 mr-2 text-blue-400"></i>
-                            <span class="text-gray-400">123 Rue du Soleil, 75001 Paris, France</span>
+                            <span class="text-gray-400">Rue KOPEGA 56.GB Lomé, Togo</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-phone mt-1 mr-2 text-blue-400"></i>
-                            <span class="text-gray-400">+33 1 23 45 67 89</span>
+                            <span class="text-gray-400">+228 97 73 43 81</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-envelope mt-1 mr-2 text-blue-400"></i>
@@ -445,17 +498,39 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.2/cdn.min.js" defer></script>
     <script>
+        // Fonction pour générer des données aléatoires basées sur l'heure
+        function generateHourlyData(baseData, variance) {
+            const hour = new Date().getHours();
+            const newData = [...baseData];
+            // Ajout d'une variation aléatoire pour l'heure actuelle
+            newData[hour] = Math.max(0, baseData[hour] + (Math.random() - 0.5) * variance);
+            return newData;
+        }
+
+        // Données de base
+        const togoBaseData = [0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.5, 1.8, 3.2, 4.5, 5.4, 5.8, 5.9, 5.7, 5.2, 4.3, 3.1, 1.9, 0.7, 0.2, 0.0, 0.0, 0.0, 0.0];
+        const worldBaseData = [0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.8, 2.1, 3.8, 5.2, 6.1, 6.5, 6.7, 6.4, 5.8, 4.9, 3.7, 2.3, 1.1, 0.4, 0.1, 0.0, 0.0, 0.0];
+
         // Graphique de production journalière
         const dailyProductionCtx = document.getElementById('dailyProductionChart').getContext('2d');
         const dailyProductionChart = new Chart(dailyProductionCtx, {
             type: 'line',
             data: {
-                labels: ['6h', '8h', '10h', '12h', '14h', '16h', '18h', '20h'],
+                labels: ['00h', '01h', '02h', '03h', '04h', '05h', '06h', '07h', '08h', '09h', '10h', '11h', '12h', '13h', '14h', '15h', '16h', '17h', '18h', '19h', '20h', '21h', '22h', '23h'],
                 datasets: [{
-                    label: 'Production (kW)',
-                    data: [0.2, 1.5, 3.8, 5.2, 4.9, 3.5, 1.2, 0.1],
+                    label: 'Production Togo (kW)',
+                    data: togoBaseData,
                     borderColor: '#1e88e5',
                     backgroundColor: 'rgba(30, 136, 229, 0.1)',
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.4
+                },
+                {
+                    label: 'Moyenne Mondiale (kW)',
+                    data: worldBaseData,
+                    borderColor: '#4caf50',
+                    backgroundColor: 'rgba(76, 175, 80, 0.1)',
                     borderWidth: 2,
                     fill: true,
                     tension: 0.4
@@ -467,6 +542,10 @@
                 plugins: {
                     legend: {
                         position: 'top',
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
                     }
                 },
                 scales: {
@@ -475,7 +554,8 @@
                         title: {
                             display: true,
                             text: 'Puissance (kW)'
-                        }
+                        },
+                        suggestedMax: 7
                     },
                     x: {
                         title: {
@@ -483,25 +563,110 @@
                             text: 'Heure'
                         }
                     }
+                },
+                interaction: {
+                    mode: 'nearest',
+                    axis: 'x',
+                    intersect: false
                 }
             }
         });
+
+        // Fonction de mise à jour du graphique
+        function updateChart() {
+            const currentHour = new Date().getHours();
+            const currentMinute = new Date().getMinutes();
+            
+            // Mettre à jour les données avec une variation aléatoire
+            dailyProductionChart.data.datasets[0].data = generateHourlyData(togoBaseData, 0.8);
+            dailyProductionChart.data.datasets[1].data = generateHourlyData(worldBaseData, 0.5);
+            
+            // Ajouter un indicateur visuel de l'heure actuelle
+            dailyProductionChart.options.plugins.annotation = {
+                annotations: {
+                    currentTime: {
+                        type: 'line',
+                        xMin: currentHour,
+                        xMax: currentHour,
+                        borderColor: 'rgba(255, 0, 0, 0.5)',
+                        borderWidth: 2,
+                        label: {
+                            content: 'Heure actuelle',
+                            enabled: true
+                        }
+                    }
+                }
+            };
+            
+            // Mettre à jour le graphique
+            dailyProductionChart.update();
+            
+            // Afficher l'heure de la dernière mise à jour
+            const updateTime = document.getElementById('lastUpdate');
+            if (updateTime) {
+                updateTime.textContent = `Dernière mise à jour : ${currentHour}h${currentMinute.toString().padStart(2, '0')}`;
+            }
+        }
+
+        // Mettre à jour immédiatement et toutes les heures
+        updateChart();
+        setInterval(updateChart, 3600000); // 3600000 ms = 1 heure
+
+        // Mise à jour plus fréquente pour la démo (toutes les 30 secondes)
+        setInterval(() => {
+            const now = new Date();
+            if (now.getSeconds() === 0 || now.getSeconds() === 30) {
+                updateChart();
+            }
+        }, 1000);
+
+        // Données de base pour la comparaison Production vs Consommation
+        const productionBaseData = {
+            'Lundi': 28,
+            'Mardi': 32,
+            'Mercredi': 35,
+            'Jeudi': 27,
+            'Vendredi': 30,
+            'Samedi': 25,
+            'Dimanche': 22
+        };
+
+        const consommationBaseData = {
+            'Lundi': 22,
+            'Mardi': 24,
+            'Mercredi': 25,
+            'Jeudi': 26,
+            'Vendredi': 23,
+            'Samedi': 30,
+            'Dimanche': 28
+        };
+
+        // Fonction pour générer des variations aléatoires
+        function generateDailyVariation(baseValue, variance) {
+            return Math.max(0, baseValue + (Math.random() - 0.5) * variance);
+        }
+
+        // Fonction pour obtenir le jour de la semaine en français
+        function getFrenchDayOfWeek(date) {
+            const days = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+            return days[date.getDay()];
+        }
 
         // Graphique de comparaison production vs consommation
         const comparisonCtx = document.getElementById('comparisonChart').getContext('2d');
         const comparisonChart = new Chart(comparisonCtx, {
             type: 'bar',
             data: {
-                labels: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'],
+                labels: Object.keys(productionBaseData),
                 datasets: [
                     {
                         label: 'Production (kWh)',
-                        data: [28, 32, 35, 27, 30, 25, 22],
+                        data: Object.values(productionBaseData),
                         backgroundColor: 'rgba(30, 136, 229, 0.8)',
                     },
                     {
                         label: 'Consommation (kWh)',
-                        data: [22, 24, 25, 26, 23, 30, 28],
+                        data: Object.values(consommationBaseData),
                         backgroundColor: 'rgba(255, 152, 0, 0.8)',
                     }
                 ]
@@ -512,6 +677,10 @@
                 plugins: {
                     legend: {
                         position: 'top',
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
                     }
                 },
                 scales: {
@@ -531,6 +700,54 @@
                 }
             }
         });
+
+        // Fonction de mise à jour du graphique de comparaison
+        function updateComparisonChart() {
+            const currentDay = getFrenchDayOfWeek(new Date());
+            const currentHour = new Date().getHours();
+            const currentMinute = new Date().getMinutes();
+
+            // Mettre à jour les données avec des variations
+            comparisonChart.data.datasets[0].data = Object.keys(productionBaseData).map(day => {
+                const baseValue = productionBaseData[day];
+                return day === currentDay ? generateDailyVariation(baseValue, 6) : baseValue;
+            });
+
+            comparisonChart.data.datasets[1].data = Object.keys(consommationBaseData).map(day => {
+                const baseValue = consommationBaseData[day];
+                return day === currentDay ? generateDailyVariation(baseValue, 4) : baseValue;
+            });
+
+            // Mettre en évidence le jour actuel
+            comparisonChart.data.datasets.forEach(dataset => {
+                dataset.backgroundColor = Object.keys(productionBaseData).map(day => 
+                    day === currentDay 
+                        ? (dataset.label.includes('Production') ? 'rgba(30, 136, 229, 1)' : 'rgba(255, 152, 0, 1)')
+                        : (dataset.label.includes('Production') ? 'rgba(30, 136, 229, 0.6)' : 'rgba(255, 152, 0, 0.6)')
+                );
+            });
+
+            // Mettre à jour le graphique
+            comparisonChart.update();
+
+            // Afficher l'heure de la dernière mise à jour
+            const updateTimeComparison = document.getElementById('lastUpdateComparison');
+            if (updateTimeComparison) {
+                updateTimeComparison.textContent = `Dernière mise à jour : ${currentHour}h${currentMinute.toString().padStart(2, '0')}`;
+            }
+        }
+
+        // Mettre à jour immédiatement et toutes les heures
+        updateComparisonChart();
+        setInterval(updateComparisonChart, 3600000); // 3600000 ms = 1 heure
+
+        // Mise à jour plus fréquente pour la démo (toutes les 30 secondes)
+        setInterval(() => {
+            const now = new Date();
+            if (now.getSeconds() === 0 || now.getSeconds() === 30) {
+                updateComparisonChart();
+            }
+        }, 1000);
 
         // Graphique de performance mensuelle
         const monthlyPerformanceCtx = document.getElementById('monthlyPerformanceChart').getContext('2d');
