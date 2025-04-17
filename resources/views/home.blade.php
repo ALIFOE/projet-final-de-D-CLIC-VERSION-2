@@ -12,6 +12,10 @@
         <style>
             body {
                 font-family: 'Poppins', sans-serif;
+                background-image: url('{{ asset('images/image-back.png') }}');
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
                 background-color: #f8f9fa;
             }
             .solar-gradient {
@@ -52,9 +56,10 @@
                 position: absolute;
                 top: 0;
                 left: 0;
-                width: 100%;
+                width: 99%;
                 height: 100%;
-                background: rgba(0, 0, 0, 0.5);
+                background-image: url('{{ asset('images/4813.jpg') }}');
+                /* background: rgba(0, 0, 0, 0.5); */
             }
             .feature-icon {
                 font-size: 2.5rem;
@@ -63,6 +68,14 @@
             .navbar-active {
                 color: #1e88e5;
                 border-bottom: 2px solid #1e88e5;
+            }
+            .content-section {
+                background-color: rgba(255, 255, 255, 0.95);
+                border-radius: 12px;
+                padding: 2rem;
+                margin: 1rem;
+                
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             }
         </style>
     </head>
@@ -84,156 +97,160 @@
         </div>
     </section>
 
-    <section class="py-16 bg-white">
+    <section class="py-16">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-800">Pourquoi choisir Né Don Energy ?</h2>
-                <p class="mt-4 text-xl text-gray-600">Une solution complète pour optimiser vos installations photovoltaïques</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="card bg-white p-8 text-center">
-                    <div class="mb-4">
-                        <i class="fas fa-chart-line feature-icon"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Suivi en temps réel</h3>
-                    <p class="text-gray-600">Visualisez la production de vos panneaux solaires en direct et accédez à des statistiques détaillées.</p>
+            <div class="content-section">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800">Pourquoi choisir Né Don Energy ?</h2>
+                    <p class="mt-4 text-xl text-gray-600">Une solution complète pour optimiser vos installations photovoltaïques</p>
                 </div>
                 
-                <div class="card bg-white p-8 text-center">
-                    <div class="mb-4">
-                        <i class="fas fa-tools feature-icon"></i>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="card bg-white p-8 text-center">
+                        <div class="mb-4">
+                            <i class="fas fa-chart-line feature-icon"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Suivi en temps réel</h3>
+                        <p class="text-gray-600">Visualisez la production de vos panneaux solaires en direct et accédez à des statistiques détaillées.</p>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Maintenance prédictive</h3>
-                    <p class="text-gray-600">Détectez les anomalies avant qu'elles n'impactent votre production et planifiez les interventions.</p>
-                </div>
-                
-                <div class="card bg-white p-8 text-center">
-                    <div class="mb-4">
-                        <i class="fas fa-sun feature-icon"></i>
+                    
+                    <div class="card bg-white p-8 text-center">
+                        <div class="mb-4">
+                            <i class="fas fa-tools feature-icon"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Maintenance prédictive</h3>
+                        <p class="text-gray-600">Détectez les anomalies avant qu'elles n'impactent votre production et planifiez les interventions.</p>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Prévisions météo</h3>
-                    <p class="text-gray-600">Anticipez votre production grâce à l'intégration des données météorologiques locales.</p>
+                    
+                    <div class="card bg-white p-8 text-center">
+                        <div class="mb-4">
+                            <i class="fas fa-sun feature-icon"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Prévisions météo</h3>
+                        <p class="text-gray-600">Anticipez votre production grâce à l'intégration des données météorologiques locales.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="fonctionnalites" class="py-16 bg-gray-100">
+    <section id="fonctionnalites" class="py-16">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-800">Fonctionnalités adaptées à chaque profil</h2>
-                <p class="mt-4 text-xl text-gray-600">Une solution polyvalente pour tous les acteurs du photovoltaïque</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="card bg-white">
-                    <div class="p-6 solar-gradient">
-                        <h3 class="text-2xl font-bold text-white">Client</h3>
-                    </div>
-                    <div class="p-6">
-                        <ul class="space-y-3">
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>Suivi de production en temps réel</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>Comparaison avec prévisions météo</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>Statistiques de rendement</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>Tableau de bord personnalisé</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>Alertes et notifications</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>Rapports téléchargeables</span>
-                            </li>
-                        </ul>
-                        <div class="mt-6">
-                            <a href="{{ route('register') }}?role=client" class="btn-primary block text-center">Devenir client</a>
-                        </div>
-                    </div>
+            <div class="content-section">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800">Fonctionnalités adaptées à chaque profil</h2>
+                    <p class="mt-4 text-xl text-gray-600">Une solution polyvalente pour tous les acteurs du photovoltaïque</p>
                 </div>
                 
-                <div class="card bg-white">
-                    <div class="p-6 solar-gradient">
-                        <h3 class="text-2xl font-bold text-white">Technicien</h3>
-                    </div>
-                    <div class="p-6">
-                        <ul class="space-y-3">
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>Gestion des installations</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>Suivi de performance</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>Détection d'anomalies</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>Calendrier des interventions</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>Recommandations d'optimisation</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>Historique des maintenances</span>
-                            </li>
-                        </ul>
-                        <div class="mt-6">
-                            <a href="{{ route('register') }}?role=technicien" class="btn-primary block text-center">Devenir technicien</a>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="card bg-white">
+                        <div class="p-6 solar-gradient">
+                            <h3 class="text-2xl font-bold text-white">Client</h3>
+                        </div>
+                        <div class="p-6">
+                            <ul class="space-y-3">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    <span>Suivi de production en temps réel</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    <span>Comparaison avec prévisions météo</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    <span>Statistiques de rendement</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    <span>Tableau de bord personnalisé</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    <span>Alertes et notifications</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    <span>Rapports téléchargeables</span>
+                                </li>
+                            </ul>
+                            <div class="mt-6">
+                                <a href="{{ route('register') }}?role=client" class="btn-primary block text-center">Devenir client</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="card bg-white">
-                    <div class="p-6 solar-gradient">
-                        <h3 class="text-2xl font-bold text-white">Administrateur</h3>
+                    
+                    <div class="card bg-white">
+                        <div class="p-6 solar-gradient">
+                            <h3 class="text-2xl font-bold text-white">Technicien</h3>
+                        </div>
+                        <div class="p-6">
+                            <ul class="space-y-3">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    <span>Gestion des installations</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    <span>Suivi de performance</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    <span>Détection d'anomalies</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    <span>Calendrier des interventions</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    <span>Recommandations d'optimisation</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    <span>Historique des maintenances</span>
+                                </li>
+                            </ul>
+                            <div class="mt-6">
+                                <a href="{{ route('register') }}?role=technicien" class="btn-primary block text-center">Devenir technicien</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="p-6">
-                        <ul class="space-y-3">
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>Tableau de bord global</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>Gestion des utilisateurs</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>Suivi de toutes les installations</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>Statistiques avancées</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>Rapports analytiques</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>Configuration système</span>
-                            </li>
-                        </ul>
-                        <div class="mt-6">
-                            <a href="{{ route('contact') }}" class="btn-primary block text-center">Nous contacter</a>
+                    
+                    <div class="card bg-white">
+                        <div class="p-6 solar-gradient">
+                            <h3 class="text-2xl font-bold text-white">Administrateur</h3>
+                        </div>
+                        <div class="p-6">
+                            <ul class="space-y-3">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    <span>Tableau de bord global</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    <span>Gestion des utilisateurs</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    <span>Suivi de toutes les installations</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    <span>Statistiques avancées</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    <span>Rapports analytiques</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    <span>Configuration système</span>
+                                </li>
+                            </ul>
+                            <div class="mt-6">
+                                <a href="{{ route('contact') }}" class="btn-primary block text-center">Nous contacter</a>
+                            </div>
                         </div>
                     </div>
                 </div>

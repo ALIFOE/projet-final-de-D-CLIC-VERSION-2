@@ -3,6 +3,10 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\Client\DashboardController;
+use App\Http\Controllers\Client\InstallationController;
+use App\Http\Controllers\Client\RealtimeDataController;
+use App\Http\Controllers\Client\InverterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,6 +57,14 @@ Route::get('/tarifs', function () {
 Route::get('/about', function () {
     return view('about');
 })->name('about');
+
+Route::get('/formation', function () {
+    return view('formation');
+})->name('formation');
+
+Route::get('/installation', function () {
+    return view('installation');
+})->name('installation');
 
 // Routes pour le contact
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');

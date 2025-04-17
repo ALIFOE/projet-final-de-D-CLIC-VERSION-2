@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 fixed top-0 left-0 right-0 z-50">
     <head>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -8,14 +8,18 @@
         <div class="flex justify-between items-center">
             <!-- Logo et Nom -->
             <div class="flex items-center">
-                <i class="fas fa-solar-panel text-blue-600 text-3xl mr-2"></i>
-                <span class="text-2xl font-bold text-gray-800">Né Don Energy</span>
+                <a href="{{ route('home') }}" class="flex items-center">
+                    <i class="fas fa-solar-panel text-blue-600 text-3xl mr-2"></i>
+                    <span class="text-2xl font-bold text-gray-800">Né Don Energy</span>
+                </a>
             </div>
 
             <!-- Navigation Links -->
             <div class="hidden md:flex space-x-10">
                 <a href="{{ route('home') }}" class="navbar-link {{ request()->routeIs('home') ? 'active' : '' }}">Accueil</a>
                 <a href="{{ route('fonctionnalite') }}" class="navbar-link {{ request()->routeIs('fonctionnalite') ? 'active' : '' }}">Fonctionnalités</a>
+                <a href="{{ route('formation') }}" class="navbar-link {{ request()->routeIs('formation') ? 'active' : '' }}">Formation</a>
+                <a href="{{ route('installation') }}" class="navbar-link {{ request()->routeIs('installation') ? 'active' : '' }}">Installations</a>
                 <a href="{{ route('tarifs') }}" class="navbar-link {{ request()->routeIs('tarifs') ? 'active' : '' }}">Tarifs</a>
                 <a href="{{ route('about') }}" class="navbar-link {{ request()->routeIs('about') ? 'active' : '' }}">À propos</a>
                 <a href="{{ route('contact') }}" class="navbar-link {{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a>
@@ -34,7 +38,7 @@
                             <span>{{ Auth::user()->prenom ?? Auth::user()->name ?? 'Utilisateur' }}</span>
                             <i class="fas fa-chevron-down ml-2 text-sm"></i>
                         </button>
-                        <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1">
+                        <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
                             <a href="{{ route('dashboard') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tableau de bord</a>
                             <a href="{{ route('admin.contacts') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                 Messages de contact
@@ -76,6 +80,8 @@
             <div class="flex flex-col space-y-3">
                 <a href="{{ route('home') }}" class="navbar-link {{ request()->routeIs('home') ? 'active' : '' }}">Accueil</a>
                 <a href="{{ route('fonctionnalite') }}" class="navbar-link {{ request()->routeIs('fonctionnalite') ? 'active' : '' }}">Fonctionnalités</a>
+                <a href="{{ route('formation') }}" class="navbar-link {{ request()->routeIs('formation') ? 'active' : '' }}">Formation</a>
+                <a href="{{ route('installation') }}" class="navbar-link {{ request()->routeIs('installation') ? 'active' : '' }}">Installations</a>
                 <a href="{{ route('tarifs') }}" class="navbar-link {{ request()->routeIs('tarifs') ? 'active' : '' }}">Tarifs</a>
                 <a href="{{ route('about') }}" class="navbar-link {{ request()->routeIs('about') ? 'active' : '' }}">À propos</a>
                 <a href="{{ route('contact') }}" class="navbar-link {{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a>
