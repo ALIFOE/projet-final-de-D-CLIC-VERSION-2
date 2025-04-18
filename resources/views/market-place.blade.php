@@ -52,7 +52,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <!-- Panneaux Solaires -->
                         <div class="product-card" data-category="panels">
-                            <img src="{{ asset('images/products/panneau-400w.jpg') }}" alt="Panneau Solaire 400W" class="w-full h-48 object-cover rounded-t-lg">
+                            <img src="{{ asset('images/panneaux.jpg') }}" alt="Panneau Solaire 400W" class="w-full h-48 object-cover rounded-t-lg">
                             <div class="p-4">
                                 <h3 class="text-xl font-semibold mb-2">Panneau Solaire 400W Monocristallin</h3>
                                 <p class="text-gray-600 mb-4">Haute efficacité, idéal pour les installations résidentielles et commerciales.</p>
@@ -66,7 +66,7 @@
                         </div>
 
                         <div class="product-card" data-category="panels">
-                            <img src="{{ asset('images/products/panneau-550w.jpg') }}" alt="Panneau Solaire 550W" class="w-full h-48 object-cover rounded-t-lg">
+                            <img src="{{ asset('images/panneau 2.jpg') }}" alt="Panneau Solaire 550W" class="w-full h-48 object-cover rounded-t-lg">
                             <div class="p-4">
                                 <h3 class="text-xl font-semibold mb-2">Panneau Solaire 550W Bifacial</h3>
                                 <p class="text-gray-600 mb-4">Technologie bifaciale pour une production optimale des deux côtés.</p>
@@ -80,7 +80,7 @@
                         </div>
 
                         <div class="product-card" data-category="panels">
-                            <img src="{{ asset('images/products/panneau-300w.jpg') }}" alt="Panneau Solaire 300W" class="w-full h-48 object-cover rounded-t-lg">
+                            <img src="{{ asset('images/panneau-poli.jpg') }}" alt="Panneau Solaire 300W" class="w-full h-48 object-cover rounded-t-lg">
                             <div class="p-4">
                                 <h3 class="text-xl font-semibold mb-2">Panneau Solaire 300W Polycristallin</h3>
                                 <p class="text-gray-600 mb-4">Solution économique pour les petites installations.</p>
@@ -94,7 +94,7 @@
                         </div>
 
                         <div class="product-card" data-category="panels">
-                            <img src="{{ asset('images/products/panneau-600w.jpg') }}" alt="Panneau Solaire 600W" class="w-full h-48 object-cover rounded-t-lg">
+                            <img src="{{ asset('images/paneau-mono.jpg') }}" alt="Panneau Solaire 600W" class="w-full h-48 object-cover rounded-t-lg">
                             <div class="p-4">
                                 <h3 class="text-xl font-semibold mb-2">Panneau Solaire 600W Monocristallin</h3>
                                 <p class="text-gray-600 mb-4">Haute puissance pour les installations industrielles.</p>
@@ -108,7 +108,7 @@
                         </div>
 
                         <div class="product-card" data-category="panels">
-                            <img src="{{ asset('images/products/panneau-flexible.jpg') }}" alt="Panneau Solaire Flexible" class="w-full h-48 object-cover rounded-t-lg">
+                            <img src="{{ asset('images/panneau-flexible.jpg') }}" alt="Panneau Solaire Flexible" class="w-full h-48 object-cover rounded-t-lg">
                             <div class="p-4">
                                 <h3 class="text-xl font-semibold mb-2">Panneau Solaire Flexible 200W</h3>
                                 <p class="text-gray-600 mb-4">Idéal pour les surfaces courbes et les applications mobiles.</p>
@@ -125,7 +125,7 @@
                     <!-- Onduleurs -->
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div class="product-card" data-category="inverters">
-                            <img src="{{ asset('images/products/onduleur-5kw.jpg') }}" alt="Onduleur Hybride 5kW" class="w-full h-48 object-cover rounded-t-lg">
+                            <img src="{{ asset('images/onduleur1.jpg') }}" alt="Onduleur Hybride 5kW" class="w-full h-48 object-cover rounded-t-lg">
                             <div class="p-4">
                                 <h3 class="text-xl font-semibold mb-2">Onduleur Hybride 5kW</h3>
                                 <p class="text-gray-600 mb-4">Compatible avec batterie et réseau, idéal pour les maisons moyennes.</p>
@@ -139,7 +139,7 @@
                         </div>
 
                         <div class="product-card" data-category="inverters">
-                            <img src="{{ asset('images/products/onduleur-3kw.jpg') }}" alt="Onduleur 3kW" class="w-full h-48 object-cover rounded-t-lg">
+                            <img src="{{ asset('images/onduleur2.jpg') }}" alt="Onduleur 3kW" class="w-full h-48 object-cover rounded-t-lg">
                             <div class="p-4">
                                 <h3 class="text-xl font-semibold mb-2">Onduleur 3kW Standard</h3>
                                 <p class="text-gray-600 mb-4">Solution économique pour les petites installations.</p>

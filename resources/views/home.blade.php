@@ -57,7 +57,7 @@
             }
             .hero-section {
                 min-height: 500px;
-                background-image: url('{{ asset('images/solar-panels.jpg')}}');
+                background-image: url('{{ asset('images/image-2.jpg')}}');
                 background-size: cover;
                 background-position: center;
                 position: relative;
@@ -78,12 +78,12 @@
             .hero-section::before {
                 content: '';
                 position: absolute;
-                top: 0;
+                top: 2;
                 left: 0;
                 width: 99%;
                 height: 100%;
                 background-image: url('{{ asset('images/4813.jpg') }}');
-                animation: overlayFade 3s ease-in-out infinite alternate;
+                /* animation: overlayFade 3s ease-in-out infinite alternate; */
             }
 
             @keyframes overlayFade {

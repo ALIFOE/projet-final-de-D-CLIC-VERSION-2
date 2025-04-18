@@ -11,7 +11,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                 <!-- Installation résidentielle -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="{{ asset('images/residential-solar.jpg') }}" alt="Installation résidentielle" class="w-full h-56 object-cover">
+                    <img src="{{ asset('images/residentiel.jpg') }}" alt="Installation résidentielle" class="w-full h-56 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold text-gray-900 mb-4">Installation Résidentielle</h3>
                         <ul class="space-y-3 mb-6">
@@ -36,7 +36,7 @@
 
                 <!-- Installation commerciale -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="{{ asset('images/commercial-solar.jpg') }}" alt="Installation commerciale" class="w-full h-56 object-cover">
+                    <img src="{{ asset('images/commercial.jpg') }}" alt="Installation commerciale" class="w-full h-56 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold text-gray-900 mb-4">Installation Commerciale</h3>
                         <ul class="space-y-3 mb-6">
@@ -61,7 +61,7 @@
 
                 <!-- Installation agricole -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="{{ asset('images/agricultural-solar.jpg') }}" alt="Installation agricole" class="w-full h-56 object-cover">
+                    <img src="{{ asset('images/agricole.jpg') }}" alt="Installation agricole" class="w-full h-56 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold text-gray-900 mb-4">Installation Agricole</h3>
                         <ul class="space-y-3 mb-6">
