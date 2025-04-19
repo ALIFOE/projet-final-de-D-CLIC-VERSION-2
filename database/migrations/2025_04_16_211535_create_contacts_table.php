@@ -16,9 +16,10 @@ return new class extends Migration
             $table->id();
             $table->string('nom');
             $table->string('email');
+            $table->string('telephone')->nullable();
             $table->string('sujet');
             $table->text('message');
-            $table->boolean('lu')->default(false);
+            $table->string('statut')->default('non_lu');
             $table->timestamps();
         });
     }

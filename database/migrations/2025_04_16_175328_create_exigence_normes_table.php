@@ -11,10 +11,16 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('exigence_normes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('norme_technique_id')->constrained('norme_techniques')->onDelete('cascade');
+            $table->string('reference');
+            $table->string('titre');
+            $table->text('description');
+            $table->string('categorie');
+            $table->string('statut')->default('actif');
             $table->timestamps();
         });
     }
@@ -24,7 +30,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('exigence_normes');
     }

@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Installation extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
 
     protected $fillable = [
         'utilisateur_id',
@@ -80,5 +81,19 @@ class Installation extends Model
     public function recommandations()
     {
         return $this->hasMany(Recommandation::class);
+    }
+
+    protected static function getDescription(string $action, $model): string
+    {
+        switch ($action) {
+            case 'création':
+                return "Nouvelle installation créée : {$model->nom}";
+            case 'modification':
+                return "Modification de l'installation {$model->nom}";
+            case 'suppression':
+                return "Suppression de l'installation {$model->nom}";
+            default:
+                return parent::getDescription($action, $model);
+        }
     }
 }

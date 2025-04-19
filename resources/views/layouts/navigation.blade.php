@@ -9,8 +9,8 @@
             <!-- Logo et Nom -->
             <div class="flex items-center">
                 <a href="{{ route('home') }}" class="flex items-center">
-                    <i class="fas fa-solar-panel text-blue-600 text-3xl mr-2"></i>
-                    <span class="text-2xl font-bold text-gray-800">Né Don Energy</span>
+                    <i class="fas fa-solar-panel text-blue-600 text-2xl mr-2"></i>
+                    <span class="text-xl font-bold text-gray-800">Né Don Energy</span>
                 </a>
             </div>
 
@@ -23,6 +23,7 @@
                 <a href="{{ route('market-place') }}" class="navbar-link {{ request()->routeIs('market-place') ? 'active' : '' }}">Martek Place</a>
                 <a href="{{ route('about') }}" class="navbar-link {{ request()->routeIs('about') ? 'active' : '' }}">À propos</a>
                 <a href="{{ route('contact') }}" class="navbar-link {{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a>
+                <a href="{{ route('activites.index') }}" class="navbar-link {{ request()->routeIs('activites.*') ? 'active' : '' }}">Mes activités</a>
             </div>
 
             <!-- User Menu -->
@@ -43,7 +44,7 @@
                             <a href="{{ route('admin.contacts') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                 Messages de contact
                                 @php
-                                    $unreadCount = \App\Models\Contact::where('lu', false)->count();
+                                    $unreadCount = \App\Models\Contact::where('statut', 'non_lu')->count();
                                 @endphp
                                 @if($unreadCount > 0)
                                     <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-600 rounded-full ml-2">
@@ -85,10 +86,14 @@
                 <a href="{{ route('market-place') }}" class="navbar-link {{ request()->routeIs('tarifs') ? 'active' : '' }}">Martek Place</a>
                 <a href="{{ route('about') }}" class="navbar-link {{ request()->routeIs('about') ? 'active' : '' }}">À propos</a>
                 <a href="{{ route('contact') }}" class="navbar-link {{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a>
+                <a href="{{ route('activites.index') }}" class="navbar-link {{ request()->routeIs('activites.*') ? 'active' : '' }}">Mes activités</a>
                 @auth
                     <a href="{{ route('dashboard') }}" class="navbar-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">Tableau de bord</a>
                     <a href="{{ route('admin.contacts') }}" class="navbar-link {{ request()->routeIs('admin.contacts') ? 'active' : '' }}">
                         Messages de contact
+                        @php
+                            $unreadCount = \App\Models\Contact::where('statut', 'non_lu')->count();
+                        @endphp
                         @if($unreadCount > 0)
                             <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-600 rounded-full ml-2">
                                 {{ $unreadCount }}

@@ -84,8 +84,8 @@
                                 </li>
                             </ul>
                             <div class="mt-6 text-center">
-                                <a href="{{ route('contact') }}" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300">
-                                    Demander un devis
+                                <a href="{{ route('dimensionnements.create') }}" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300">
+                                    Demander un dimensionnement
                                 </a>
                             </div>
                         </div>
@@ -178,4 +178,4 @@
             </div>
         </div>
     </div>
-</x-app-layout> 
+</x-app-layout>

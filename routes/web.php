@@ -7,7 +7,14 @@ use App\Http\Controllers\Client\DashboardController;
 use App\Http\Controllers\Client\InstallationController;
 use App\Http\Controllers\Client\RealtimeDataController;
 use App\Http\Controllers\Client\InverterController;
+use App\Http\Controllers\DimensionnementController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\MarketplaceController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OnduleurController;
+use App\Http\Controllers\DevisController;
+use App\Http\Controllers\LogActiviteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,17 +31,31 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {  
-});
+    // Routes pour les dimensionnements
+    Route::resource('dimensionnements', DimensionnementController::class);
 
-Route::middleware('auth')->group(function () {
+    // Routes pour onduleurs
+    Route::get('/onduleurs', [OnduleurController::class, 'index'])->name('onduleurs.index');
+    Route::get('/onduleurs/create', [OnduleurController::class, 'create'])->name('onduleurs.create');
+    Route::post('/onduleurs', [OnduleurController::class, 'store'])->name('onduleurs.store');
+    Route::get('/onduleurs/{id}', [OnduleurController::class, 'show'])->name('onduleurs.show');
+    Route::get('/onduleurs/{id}/edit', [OnduleurController::class, 'edit'])->name('onduleurs.edit');
+    Route::put('/onduleurs/{id}', [OnduleurController::class, 'update'])->name('onduleurs.update');
+    Route::delete('/onduleurs/{id}', [OnduleurController::class, 'destroy'])->name('onduleurs.destroy');
+    Route::post('/onduleurs/{id}/toggle-connection', [OnduleurController::class, 'toggleConnection'])->name('onduleurs.toggle-connection');
+    Route::get('/onduleurs/{id}/performance', [OnduleurController::class, 'performance'])->name('onduleurs.performance');
+
+    // Routes pour le client
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // Routes pour les activités
+    Route::get('/activites', [LogActiviteController::class, 'index'])->name('activites.index');
+    Route::get('/activites/export-pdf', [LogActiviteController::class, 'exportPDF'])->name('activites.export-pdf');
 });
 
 // Routes pour le blog
@@ -50,9 +71,7 @@ Route::get('/fonctionnalite', function () {
     return view('fonctionnalite');
 })->name('fonctionnalite');
 
-Route::get('/market-place', function () {
-    return view('market-place');
-})->name('market-place');
+Route::get('/market-place', [MarketplaceController::class, 'index'])->name('market-place');
 
 Route::get('/about', function () {
     return view('about');
@@ -80,5 +99,32 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/admin/contacts/{id}/mark-read', [ContactController::class, 'markAsRead'])->name('admin.contacts.mark-read');
     Route::delete('/admin/contacts/{id}', [ContactController::class, 'destroy'])->name('admin.contacts.destroy');
 });
+
+Route::get('/dimensionnement', [DimensionnementController::class, 'showForm'])->name('dimensionnement');
+Route::post('/dimensionnement', [DimensionnementController::class, 'submit'])->name('dimensionnement.submit');
+
+// Routes pour le processus de paiement
+Route::get('/checkout/{product}', [PaymentController::class, 'showCheckout'])->name('checkout');
+Route::post('/process-payment', [PaymentController::class, 'processPayment'])->name('process.payment');
+Route::get('/payment-success/{order}', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
+
+// Routes pour les commandes
+Route::middleware(['auth'])->group(function () {
+    Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+    Route::get('/orders/{order}/success', [OrderController::class, 'success'])->name('orders.success');
+});
+
+// Routes d'administration
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/orders', [App\Http\Controllers\Admin\OrderController::class, 'index'])->name('orders.index');
+    Route::get('/orders/{order}', [App\Http\Controllers\Admin\OrderController::class, 'show'])->name('orders.show');
+    Route::put('/orders/{order}/status', [App\Http\Controllers\Admin\OrderController::class, 'updateStatus'])->name('orders.update-status');
+    Route::get('/users/{user}', [App\Http\Controllers\Admin\UtilisateurController::class, 'show'])->name('users.show');
+});
+
+Route::get('/devis/create', [DevisController::class, 'create'])->name('devis.create');
+Route::post('/devis', [DevisController::class, 'store'])->name('devis.store');
 
 require __DIR__.'/auth.php';

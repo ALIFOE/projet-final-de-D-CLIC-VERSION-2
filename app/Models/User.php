@@ -41,4 +41,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Relation avec les onduleurs.
+     */
+    public function onduleurs()
+    {
+        return $this->hasMany(Onduleur::class);
+    }
+
+    /**
+     * Relation avec les demandes de dimensionnement.
+     */
+    public function dimensionnements()
+    {
+        return $this->hasMany(Dimensionnement::class);
+    }
 }

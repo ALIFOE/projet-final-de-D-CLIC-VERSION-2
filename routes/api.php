@@ -20,22 +20,30 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Routes pour les utilisateurs
-Route::prefix('utilisateurs')->group(function () {
-    Route::get('/', [UtilisateurController::class, 'index']);
-    Route::post('/', [UtilisateurController::class, 'store']);
-    Route::get('/{utilisateur}', [UtilisateurController::class, 'show']);
-    Route::put('/{utilisateur}', [UtilisateurController::class, 'update']);
-    Route::delete('/{utilisateur}', [UtilisateurController::class, 'destroy']);
-});
+Route::middleware('auth:sanctum')->group(function () {
+    // Routes pour les utilisateurs
+    Route::prefix('utilisateurs')->group(function () {
+        Route::get('/', [UtilisateurController::class, 'index']);
+        Route::post('/', [UtilisateurController::class, 'store']);
+        Route::get('/{utilisateur}', [UtilisateurController::class, 'show']);
+        Route::put('/{utilisateur}', [UtilisateurController::class, 'update']);
+        Route::delete('/{utilisateur}', [UtilisateurController::class, 'destroy']);
+    });
 
-// Routes pour les installations
-Route::prefix('installations')->group(function () {
-    Route::get('/', [InstallationController::class, 'index']);
-    Route::post('/', [InstallationController::class, 'store']);
-    Route::get('/{installation}', [InstallationController::class, 'show']);
-    Route::put('/{installation}', [InstallationController::class, 'update']);
-    Route::delete('/{installation}', [InstallationController::class, 'destroy']);
-    Route::get('/{installation}/production', [InstallationController::class, 'getProductionData']);
-    Route::get('/{installation}/consommation', [InstallationController::class, 'getConsommationData']);
+    // Routes pour les installations
+    Route::prefix('installations')->group(function () {
+        Route::get('/', [InstallationController::class, 'index']);
+        Route::post('/', [InstallationController::class, 'store']);
+        Route::get('/{installation}', [InstallationController::class, 'show']);
+        Route::put('/{installation}', [InstallationController::class, 'update']);
+        Route::delete('/{installation}', [InstallationController::class, 'destroy']);
+        Route::get('/{installation}/production', [InstallationController::class, 'getProductionData']);
+        Route::get('/{installation}/consommation', [InstallationController::class, 'getConsommationData']);
+    });
+
+    // Route pour les détails des activités
+    Route::get('/activites/details/{table}/{id}', [App\Http\Controllers\Api\LogActiviteDetailController::class, 'show']);
+
+    // Routes pour les données des onduleurs
+    Route::get('/onduleurs/{id}/latest-data', [App\Http\Controllers\OnduleurController::class, 'getLatestData']);
 });

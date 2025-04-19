@@ -28,7 +28,7 @@
                                 <span class="text-gray-600">Installation sur toiture ou au sol</span>
                             </li>
                         </ul>
-                        <a href="{{ route('contact') }}" class="block text-center bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300">
+                        <a href="{{ route('devis.create') }}" class="block text-center bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300">
                             Demander un devis
                         </a>
                     </div>
@@ -53,7 +53,7 @@
                                 <span class="text-gray-600">Rentabilité optimisée</span>
                             </li>
                         </ul>
-                        <a href="{{ route('contact') }}" class="block text-center bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300">
+                        <a href="{{ route('devis.create') }}" class="block text-center bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300">
                             Demander un devis
                         </a>
                     </div>
@@ -78,7 +78,7 @@
                                 <span class="text-gray-600">Solutions agrivoltaïques</span>
                             </li>
                         </ul>
-                        <a href="{{ route('contact') }}" class="block text-center bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300">
+                        <a href="{{ route('devis.create') }}" class="block text-center bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300">
                             Demander un devis
                         </a>
                     </div>
@@ -122,4 +122,4 @@
             </div>
         </div>
     </div>
-</x-app-layout> 
+</x-app-layout>

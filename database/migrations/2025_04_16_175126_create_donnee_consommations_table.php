@@ -11,10 +11,20 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('donnee_consommations', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('installation_id')->constrained()->onDelete('cascade');
+            $table->dateTime('date_heure');
+            $table->float('puissance_instantanee')->comment('en W');
+            $table->float('energie_jour')->comment('en kWh');
+            $table->float('energie_mois')->comment('en kWh');
+            $table->float('energie_annee')->comment('en kWh');
+            $table->float('energie_totale')->comment('en kWh');
+            $table->float('cout_jour')->comment('en euros');
+            $table->float('cout_mois')->comment('en euros');
+            $table->float('cout_annee')->comment('en euros');
             $table->timestamps();
         });
     }
@@ -24,7 +34,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('donnee_consommations');
     }

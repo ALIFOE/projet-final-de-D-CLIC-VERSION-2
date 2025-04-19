@@ -11,10 +11,17 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('alertes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('installation_id')->constrained()->onDelete('cascade');
+            $table->string('type');
+            $table->text('description');
+            $table->string('niveau')->default('info');
+            $table->string('statut')->default('nouvelle');
+            $table->dateTime('date_creation');
+            $table->dateTime('date_resolution')->nullable();
             $table->timestamps();
         });
     }
@@ -24,7 +31,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('alertes');
     }

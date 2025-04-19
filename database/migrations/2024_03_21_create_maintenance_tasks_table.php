@@ -8,10 +8,10 @@ return new class extends Migration
 {
     public function up()
     {
-        if (!Schema::hasTable('maintenance_tasks')) {
+        if (!Schema::hasTable('maintenance_tasks') && Schema::hasTable('installations')) {
             Schema::create('maintenance_tasks', function (Blueprint $table) {
                 $table->id();
-                $table->foreignId('utilisateur_id')->constrained('utilisateurs')->onDelete('cascade');
+                $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
                 $table->foreignId('installation_id')->constrained('installations')->onDelete('cascade');
                 $table->string('type');
                 $table->text('description');

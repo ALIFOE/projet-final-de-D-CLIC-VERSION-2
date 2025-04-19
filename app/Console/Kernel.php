@@ -15,7 +15,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        // Récupérer les données des onduleurs toutes les 5 minutes
+        $schedule->command('inverters:fetch-data')
+                ->everyFiveMinutes()
+                ->withoutOverlapping()
+                ->appendOutputTo(storage_path('logs/inverter-data.log'));
     }
 
     /**

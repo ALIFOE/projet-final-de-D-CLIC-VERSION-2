@@ -2,84 +2,152 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DimensionnementRequest;
+use App\Mail\DimensionnementRequest as DimensionnementMail;
 use App\Models\Dimensionnement;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 
 class DimensionnementController extends Controller
 {
+    protected const STATUTS_VALIDES = ['en_attente', 'validé', 'refusé'];
+
     /**
-     * Display a listing of the resource.
+     * Afficher le formulaire de dimensionnement.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
+     */
+    public function showForm()
+    {
+        return view('dimensionnements.form');
+    }
+
+    /**
+     * Afficher la liste des demandes de dimensionnement.
      */
     public function index()
     {
-        //
+        try {
+            $dimensionnements = Dimensionnement::with('user')
+                ->where('user_id', auth()->id())
+                ->orderBy('created_at', 'desc')
+                ->paginate(10);
+
+            return view('dimensionnements.index', compact('dimensionnements'));
+        } catch (\Exception $e) {
+            Log::error('Erreur lors de la récupération des dimensionnements : ' . $e->getMessage());
+            return back()->with('error', 'Une erreur est survenue lors de la récupération de vos demandes.');
+        }
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Afficher le formulaire de création.
      */
     public function create()
     {
-        //
+        return view('dimensionnements.create');
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Enregistrer une nouvelle demande.
      */
-    public function store(Request $request)
+    public function store(DimensionnementRequest $request)
     {
-        //
+        try {
+            Log::info('Début de la création du dimensionnement', $request->validated());
+            
+            $dimensionnement = new Dimensionnement($request->validated());
+            $dimensionnement->user_id = auth()->id();
+            $dimensionnement->statut = 'en_attente';
+            
+            Log::info('Tentative de sauvegarde du dimensionnement');
+            $dimensionnement->save();
+            Log::info('Dimensionnement sauvegardé avec succès', ['id' => $dimensionnement->id]);
+
+            try {
+                Log::info('Tentative d\'envoi d\'email à : ' . $request->email);
+                Mail::to($request->email)->send(new DimensionnementMail($dimensionnement));
+                Log::info('Email envoyé avec succès');
+            } catch (\Exception $mailException) {
+                Log::error('Erreur lors de l\'envoi de l\'email : ' . $mailException->getMessage(), [
+                    'exception' => $mailException,
+                    'email' => $request->email
+                ]);
+            }
+
+            return redirect()
+                ->route('dashboard')
+                ->with('success', 'Votre demande de dimensionnement a été enregistrée avec succès. Un email de confirmation vous a été envoyé.');
+        } catch (\Exception $e) {
+            Log::error('Erreur lors de la création du dimensionnement : ' . $e->getMessage(), [
+                'exception' => $e,
+                'request' => $request->all()
+            ]);
+            return back()
+                ->withInput()
+                ->with('error', 'Une erreur est survenue lors de l\'enregistrement de votre demande. Veuillez réessayer.');
+        }
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Dimensionnement  $dimensionnement
-     * @return \Illuminate\Http\Response
+     * Afficher une demande spécifique.
      */
     public function show(Dimensionnement $dimensionnement)
     {
-        //
+        $this->authorize('view', $dimensionnement);
+        return view('dimensionnements.show', compact('dimensionnement'));
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Dimensionnement  $dimensionnement
-     * @return \Illuminate\Http\Response
+     * Afficher le formulaire de modification.
      */
     public function edit(Dimensionnement $dimensionnement)
     {
-        //
+        $this->authorize('update', $dimensionnement);
+        return view('dimensionnements.edit', compact('dimensionnement'));
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Dimensionnement  $dimensionnement
-     * @return \Illuminate\Http\Response
+     * Mettre à jour une demande.
      */
-    public function update(Request $request, Dimensionnement $dimensionnement)
+    public function update(DimensionnementRequest $request, Dimensionnement $dimensionnement)
     {
-        //
+        try {
+            $this->authorize('update', $dimensionnement);
+            
+            if (!in_array($dimensionnement->statut, self::STATUTS_VALIDES)) {
+                throw new \Exception('Statut de dimensionnement invalide');
+            }
+
+            $dimensionnement->update($request->validated());
+
+            return redirect()
+                ->route('dimensionnements.show', $dimensionnement)
+                ->with('success', 'La demande a été mise à jour avec succès.');
+        } catch (\Exception $e) {
+            Log::error('Erreur lors de la mise à jour du dimensionnement : ' . $e->getMessage());
+            return back()
+                ->withInput()
+                ->with('error', 'Une erreur est survenue lors de la mise à jour de votre demande. Veuillez réessayer.');
+        }
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Dimensionnement  $dimensionnement
-     * @return \Illuminate\Http\Response
+     * Supprimer une demande.
      */
     public function destroy(Dimensionnement $dimensionnement)
     {
-        //
+        try {
+            $this->authorize('delete', $dimensionnement);
+            
+            $dimensionnement->delete();
+
+            return redirect()
+                ->route('dimensionnements.index')
+                ->with('success', 'La demande a été supprimée avec succès.');
+        } catch (\Exception $e) {
+            Log::error('Erreur lors de la suppression du dimensionnement : ' . $e->getMessage());
+            return back()->with('error', 'Une erreur est survenue lors de la suppression de votre demande.');
+        }
     }
 }

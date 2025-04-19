@@ -13,15 +13,14 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('categorie_id')->constrained('categories')->onDelete('cascade');
+            $table->string('titre');
             $table->string('slug')->unique();
-            $table->text('content');
-            $table->string('image');
-            $table->boolean('published')->default(false);
-            $table->timestamp('published_at')->nullable();
-            $table->integer('reading_time');
-            $table->foreignId('category_id')->constrained()->onDelete('cascade');
-            $table->foreignId('author_id')->constrained('users')->onDelete('cascade');
+            $table->text('contenu');
+            $table->string('image')->nullable();
+            $table->string('statut')->default('brouillon');
+            $table->dateTime('date_publication')->nullable();
             $table->timestamps();
         });
     }

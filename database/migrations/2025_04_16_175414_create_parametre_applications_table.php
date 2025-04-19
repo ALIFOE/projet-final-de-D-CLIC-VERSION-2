@@ -11,10 +11,15 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('parametre_applications', function (Blueprint $table) {
             $table->id();
+            $table->string('cle');
+            $table->text('valeur');
+            $table->text('description')->nullable();
+            $table->string('type')->default('texte');
+            $table->string('groupe')->default('general');
             $table->timestamps();
         });
     }
@@ -24,7 +29,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('parametre_applications');
     }

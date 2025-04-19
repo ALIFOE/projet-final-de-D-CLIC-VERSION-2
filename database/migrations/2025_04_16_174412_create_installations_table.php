@@ -11,24 +11,29 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('installations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('utilisateur_id')->constrained('utilisateurs')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('nom');
-            $table->date('date_installation');
-            $table->decimal('puissance_totale', 10, 2)->comment('en kWc');
-            $table->decimal('surface_totale', 10, 2)->nullable()->comment('en m²');
-            $table->integer('nombre_panneaux');
-            $table->decimal('latitude', 10, 7)->nullable();
-            $table->decimal('longitude', 10, 7)->nullable();
-            $table->string('orientation')->nullable();
-            $table->decimal('inclinaison', 5, 2)->nullable()->comment('en degrés');
-            $table->text('description')->nullable();
-            $table->enum('statut', ['active', 'en maintenance', 'inactive'])->default('active');
-            $table->decimal('cout_installation', 10, 2)->nullable()->comment('en euros');
-            $table->date('date_mise_service')->nullable();
+            $table->string('adresse');
+            $table->string('ville');
+            $table->string('code_postal');
+            $table->string('pays');
+            $table->float('latitude')->nullable();
+            $table->float('longitude')->nullable();
+            $table->float('surface_disponible')->nullable();
+            $table->float('puissance_installee')->nullable();
+            $table->float('production_annuelle_estimee')->nullable();
+            $table->float('economie_annuelle_estimee')->nullable();
+            $table->float('taux_autoconsommation')->nullable();
+            $table->float('taux_autoproduction')->nullable();
+            $table->float('prix_kwh')->nullable();
+            $table->float('budget_total')->nullable();
+            $table->float('duree_amortissement')->nullable();
+            $table->float('rentabilite')->nullable();
+            $table->string('statut')->default('en_cours');
             $table->timestamps();
         });
     }
@@ -38,7 +43,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('installations');
     }

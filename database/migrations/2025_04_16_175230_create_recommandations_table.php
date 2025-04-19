@@ -11,10 +11,18 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('recommandations', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('installation_id')->constrained()->onDelete('cascade');
+            $table->string('type');
+            $table->text('description');
+            $table->string('priorite')->default('moyenne');
+            $table->string('statut')->default('nouvelle');
+            $table->date('date_creation');
+            $table->date('date_realisation')->nullable();
+            $table->text('notes')->nullable();
             $table->timestamps();
         });
     }
@@ -24,7 +32,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('recommandations');
     }
